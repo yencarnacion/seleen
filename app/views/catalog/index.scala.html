@@ -1,0 +1,32 @@
+@(q: String, documents: List[SolrDocument])(implicit flash: Flash, lang: Lang)
+
+@main(Messages("application.name")){
+   <div id="sidebar" class="span3">
+       @facets()
+   </div>
+
+   <div id="content" class="span9">
+
+    @if(q == ""){
+        @*if there are no input/search related params, display the "home" template *@
+        @home()
+    } else {
+        <h2 class="hide-text top-content-title">@Messages("seleen.search.searchResultsHeader")</h2>
+
+        @****************
+        %{--<% @page_title = t('gaseline.search.title', :application_name => application_name) %>--}%
+        %{--<% extra_head_content << render_opensearch_response_metadata.html_safe %>--}%
+        %{--<g:render template="did_you_mean"/>--}%
+
+        %{--<g:render template="constrains"/>--}%
+
+        %{--<g:render template="sort_and_per_page"/>--}%
+        ***************@
+
+        <h2 class="hide-text">@Messages("gaseline.search.search_results")</h2>
+        @*--<%= render_document_index %>--*@
+
+        @*--<g:render template="results_pagination"/>--*@
+    }
+    </div>
+}

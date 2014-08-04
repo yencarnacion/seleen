@@ -1,0 +1,34 @@
+@(searchForm: Form[Search])
+@* #Search form can be added here, defaulted to the navbar for Bootstrap version *@
+
+@import helper._
+
+<div class="span6 clearfix" id="searchbar">
+    @helper.form(action = routes.Catalog.index(),
+                 'accept-charset ->, "UTF-8", 
+                 'class ->"search-query-form form-inline clearfix"){
+    
+    @*
+    <g:form action="index" method="get" accept-charset="UTF-8" class="search-query-form form-inline clearfix">
+    *@
+
+       <div style="margin:0;padding:0;display:inline">
+	   @helper.inputText(searchForm("utf8"),
+                             'type->"hidden", 
+                             'value->"&#x2713")
+           @helper.inputText(seachForm("q"), 
+                             'type->"search")
+           
+            @*********
+           <g:field type="hidden" name="utf8" value="&#x2713"/>
+           <g:field type="search" name="q" value="${command.q}"/>
+            *********@
+       </div>
+    }
+@homeText()
+
+@*
+%{--<% sidebar_items << capture do %>--}%
+%{--<%= render :partial=>'facets' %>--}%
+%{--<% end %>--}%
+*@
